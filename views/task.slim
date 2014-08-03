@@ -1,0 +1,5 @@
+li.task id=task.id
+  = task.name
+  form.delete action="/tasks/#{task.id}" method="POST"
+    input type="hidden" name="_method" value="DELETE"
+    input type="submit" value="Delete Task" title="Delete Task"
