@@ -28,7 +28,14 @@ post '/' do
   redirect to('/')
 end
 
-delete '/tasks/:id' do
+delete '/task/:id' do
   Task.get(params[:id]).destroy
+  redirect to('/')
+end
+
+put '/task/:id' do
+  task = Task.get(params[:id])
+  task.completed_at = task.completed_at.nil? ? Time.now : nil
+  task.save
   redirect to('/')
 end

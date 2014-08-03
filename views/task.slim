@@ -1,5 +1,12 @@
 li.task id=task.id
   = task.name
-  form.delete action="/tasks/#{task.id}" method="POST"
+  form.update action="/task/#{task.id}" method="POST"
+    input type="hidden" name="_method" value="PUT"
+    -if task.completed_at.nil?
+      input type="submit" value=" " title="Complete Task"
+    -else
+      input type="submit" value="✔︎" title="Uncomplete Task"
+
+  form.delete action="/task/#{task.id}" method="POST"
     input type="hidden" name="_method" value="DELETE"
     input type="submit" value="Delete Task" title="Delete Task"
